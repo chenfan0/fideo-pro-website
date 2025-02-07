@@ -1,0 +1,106 @@
+/* 文章基础样式 */
+.blog-detail {
+  color: #cbd5e1; /* 更柔和的基础文字颜色 */
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+/* 段落样式 */
+.blog-detail p {
+  margin: 1.5rem 0;
+}
+
+/* 标题样式 */
+.blog-detail h1 {
+  font-size: 2.75rem; /* 更大的字号 */
+  font-weight: 900; /* 显著加粗 */
+  margin: 2rem 0 1.5rem;
+  color: #f8fafc; /* 更亮的白色，增加对比度 */
+  line-height: 1.2;
+}
+
+.blog-detail h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  color: #f1f5f9; /* 略微柔和的白色 */
+}
+
+.blog-detail h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+  color: #e2e8f0; /* 再柔和一点的白色 */
+}
+
+/* 图片样式 */
+.blog-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* 图片悬停效果 */
+.blog-detail img:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* 链接样式 */
+.blog-detail a {
+  color: #4ade80; /* 更亮的绿色 */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.blog-detail a:hover {
+  color: #86efac; /* 更亮的悬停颜色 */
+  text-decoration: underline;
+}
+
+/* 列表样式 */
+.blog-detail ul,
+.blog-detail ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-detail li {
+  margin: 0.5rem 0;
+}
+
+/* 引用块样式 */
+.blog-detail blockquote {
+  border-left: 4px solid #34d399;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  background-color: rgba(52, 211, 153, 0.1);
+  border-radius: 0.25rem;
+}
+
+/* 代码块样式 */
+.blog-detail pre {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-detail code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+}
+
+/* 行内代码样式 */
+.blog-detail p code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}

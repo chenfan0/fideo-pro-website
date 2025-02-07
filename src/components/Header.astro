@@ -1,0 +1,99 @@
+---
+import logo from '../../public/logo.png';
+
+const currentLang = 'zh-CN'
+
+const navItems = currentLang === 'zh-CN' 
+  ? [
+    { name: '下载', href: '/cn#download' },
+    { name: '常见问题', href: '/cn#faq' },
+    { name: '博客', href: '/cn/blog' }
+  ]
+  : [
+    { name: 'Download', href: '/en#download' },
+    { name: 'FAQ', href: '/en#faq' },
+    { name: 'Blog', href: '/en/blog' }
+  ];
+---
+
+<header class="fixed w-full top-0 left-0 right-0 bg-gray-900 border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-2">
+          <img 
+            src={logo.src} 
+            width={logo.width}
+            height={logo.height}
+            alt="Fideo Logo" 
+            class="h-8 w-auto"
+          />
+        </a>
+      </div>
+
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- 移动端菜单按钮 -->
+      <button
+        type="button"
+        id="menuButton"
+        class="md:hidden p-2 rounded-md text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200"
+        aria-label={currentLang === 'zh-CN' ? '打开菜单' : 'Open Menu'}
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-1">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="block py-2 px-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors duration-200"
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
+
+<style>
+  header {
+    z-index: 50;
+  }
+</style> 

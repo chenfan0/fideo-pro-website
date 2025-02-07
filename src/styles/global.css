@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* 设置暗色主题的基础样式 */
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-gray-900 text-white;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* 选中文本的样式 */
+::selection {
+  @apply bg-emerald-500/30 text-white;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 确保所有图片在暗色模式下有正确的滤镜 */
+img {
+  @apply select-none;
+}
+
+/* 针对暗色模式优化的链接悬停效果 */
+a {
+  @apply transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-emerald-400;
+}
+
+/* 输入框在暗色模式下的样式 */
+input,
+textarea {
+  @apply bg-gray-800 border-gray-700;
+}
+
+input:focus,
+textarea:focus {
+  @apply border-emerald-500 outline-none ring-1 ring-emerald-500;
+}
+
+/* 按钮在暗色模式下的样式 */
+button {
+  @apply transition-colors duration-200;
+}
+
+button:focus {
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-gray-900;
+}
