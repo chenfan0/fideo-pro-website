@@ -3,7 +3,7 @@ layout: ../../../../layouts/BlogPostLayout.astro
 title: '如何使用Fideo录制直播?'
 description: '这是一篇介绍如何使用Fideo录制直播的Blog'
 date: '2025-02-07'
-image: '/blog/how-to-start-record/preview.webp'
+image: '/blog/how-to-start-record/preview.png'
 ---
 
 点击上方 **+** 图标
