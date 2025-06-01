@@ -16,7 +16,7 @@ const navItems = currentLang === 'zh-CN'
   ];
 ---
 
-<header class="fixed w-full top-0 left-0 right-0 bg-gray-900 border-b border-gray-800">
+<header class="fixed w-full left-0 right-0 bg-gray-900 border-b border-gray-800 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
@@ -95,5 +95,6 @@ const navItems = currentLang === 'zh-CN'
 <style>
   header {
     z-index: 50;
+    /* 移除固定的 top 值，由 JavaScript 动态设置 */
   }
 </style> 

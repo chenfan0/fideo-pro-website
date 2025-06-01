@@ -1,0 +1,157 @@
+---
+// 号卡办理广告位组件
+export interface Props {
+  cardType?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  backgroundColor?: string;
+  textColor?: string;
+  closeable?: boolean;
+  urgent?: boolean;
+  proCode?: string;
+  groupNumber?: string;
+}
+
+const {
+  cardType = "大流量手机卡办理",
+  description = "超大流量 实惠月租 官方合作 免费包邮",
+  buttonText = "立即办理",
+  buttonLink = "http://8000hk.com/index?k=K3prL3B5VDVoOHM9",
+  backgroundColor = "bg-gradient-to-r from-red-500 to-orange-500",
+  textColor = "text-white",
+  closeable = true,
+  urgent = true,
+  proCode = "赠送一个月 Fideo Pro 激活码",
+  groupNumber = "QQ群: 1012142357"
+} = Astro.props;
+---
+
+<div id="adBanner" class={`fixed top-0 left-0 right-0 w-full ${backgroundColor} ${textColor} py-2 px-4 z-[100] shadow-lg`}>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between">
+      <!-- 广告内容 -->
+      <div class="flex items-center space-x-2 md:space-x-4 flex-1">
+        <!-- 闪烁图标 -->
+        {urgent && (
+          <div class="flex-shrink-0">
+            <span class="animate-pulse text-yellow-300 text-lg">🔥</span>
+          </div>
+        )}
+        
+        <!-- 主要信息 -->
+        <div class="flex-1">
+          <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+            <!-- 号卡名称和优惠 -->
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-sm md:text-base">{cardType}</span>
+            </div>
+            
+            <!-- 套餐详情 -->
+            <div class="flex items-center space-x-3 text-xs md:text-sm">
+              <span class="flex items-center">
+                <span class="font-semibold ml-1 text-yellow-200">{description}</span>
+              </span>
+            </div>
+            
+            <!-- 新增福利信息 -->
+            <div class="flex flex-col md:flex-row md:items-center md:space-x-3 text-xs mt-1 md:mt-0">
+              <div class="flex items-center space-x-1">
+                <span class="text-yellow-300">🎁</span>
+                <span class="text-yellow-200 font-medium">{proCode}</span>
+              </div>
+              <div class="flex items-center space-x-1">
+                <span class="text-blue-300">👥</span>
+                <span class="text-blue-200 font-medium">{groupNumber}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 行动按钮 -->
+        <div class="flex items-center space-x-2">
+          <a
+            href={buttonLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-white text-red-600 px-3 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-bold hover:bg-yellow-100 transition-all duration-200 whitespace-nowrap shadow-lg transform hover:scale-105"
+          >
+            {buttonText}
+          </a>
+          
+          <!-- 紧急提示 -->
+          {urgent && (
+            <span class="hidden md:block text-xs opacity-90 animate-pulse">
+              限时优惠!
+            </span>
+          )}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateHeaderPosition() {
+    const adBanner = document.getElementById('adBanner');
+    const header = document.querySelector('header');
+    
+    if (adBanner && header) {
+      const bannerHeight = adBanner.offsetHeight;
+      header.style.top = `${bannerHeight}px`;
+    }
+  }
+  
+  // 初始化位置
+  document.addEventListener('DOMContentLoaded', () => {
+    // 延迟执行，确保所有组件都已渲染
+    setTimeout(updateHeaderPosition, 100);
+  });
+  
+  // 监听窗口大小变化
+  window.addEventListener('resize', updateHeaderPosition);
+  
+  // 关闭按钮功能
+  const closeBanner = document.getElementById('closeBanner');
+  const adBanner = document.getElementById('adBanner');
+  
+  if (closeBanner && adBanner) {
+    closeBanner.addEventListener('click', () => {
+      adBanner.style.transform = 'translateY(-100%)';
+      document.body.classList.add('ad-banner-closed');
+      
+      // 重新调整所有元素位置
+      setTimeout(() => {
+        const header = document.querySelector('header');
+        
+        if (header) {
+          header.style.top = '0px';
+        }
+      }, 300); // 等待动画完成
+      
+      // 保存关闭状态到 localStorage
+      localStorage.setItem('adBannerClosed', 'true');
+    });
+  }
+  
+</script>
+
+<style>
+  #adBanner {
+    /* 确保广告位在最顶层 */
+    z-index: 100;
+  }
+  
+  /* 添加一些动画效果 */
+  @keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200px 100%;
+    animation: shimmer 2s infinite;
+  }
+</style>

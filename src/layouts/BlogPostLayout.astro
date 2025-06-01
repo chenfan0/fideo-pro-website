@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import '../styles/blog.css'
 import Layout from './Layout.astro';
+import AdBanner from '../components/AdBanner.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -9,8 +10,9 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout>
+  <AdBanner />
   <Header />
-  <main class="max-w-4xl mx-auto px-4 py-12 pt-16 md:pt-24">
+  <main class="max-w-4xl mx-auto px-4 py-12 pt-24 md:pt-32">
     <article class="prose prose-lg max-w-none">
       <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
       <div class="flex items-center text-sm text-gray-500 mb-8">

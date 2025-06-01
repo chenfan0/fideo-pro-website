@@ -1,6 +1,6 @@
 <template>
   <header
-    class="relative z-10 px-4 pt-16 md:pt-24 md:py-20 max-w-[1140px] mx-auto text-center overflow-hidden"
+    class="relative z-10 pt-[180px] px-4 pb-20 max-w-[1140px] mx-auto text-center overflow-hidden"
   >
     <section>
       <!-- 背景装饰 -->

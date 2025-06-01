@@ -1,6 +1,7 @@
 ---
 import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro';
+import AdBanner from '../../components/AdBanner.astro';
 import Header from '../../components/Header.astro'
 import StreamPreview from '../../components/StreamPreview.vue';
 import DownloadSection from '../../components/DownloadSection.vue';
@@ -9,6 +10,7 @@ import Footer from "../../components/Footer.astro";
 ---
 
 <Layout >
+  <AdBanner />
   <Header />
   <StreamPreview client:load />
   <DownloadSection client:load />
