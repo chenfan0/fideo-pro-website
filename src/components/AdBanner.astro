@@ -71,6 +71,7 @@ const {
         <!-- 行动按钮 -->
         <div class="flex items-center space-x-2">
           <a
+            id="adBannerButton"
             href={buttonLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -135,6 +136,33 @@ const {
     });
   }
   
+  // Clarity 埋点函数
+  function trackClarityEvent(eventName: string, eventData: Record<string, any> = {}) {
+    if (typeof window !== 'undefined' && (window as any).clarity) {
+      (window as any).clarity('event', eventName, eventData);
+    }
+  }
+  
+  // 添加点击事件监听
+  document.addEventListener('DOMContentLoaded', () => {
+    const adButton = document.getElementById('adBannerButton') as HTMLAnchorElement;
+    
+    if (adButton) {
+      adButton.addEventListener('click', (event) => {
+        // 发送 Clarity 埋点
+        trackClarityEvent('ad_banner_click', {
+          button_text: adButton.textContent?.trim() || '',
+          button_url: adButton.href,
+          timestamp: new Date().toISOString(),
+          user_agent: navigator.userAgent,
+          page_url: window.location.href
+        });
+        
+        // 可选：添加控制台日志用于调试
+        console.log('Ad banner button clicked - Clarity event sent');
+      });
+    }
+  });
 </script>
 
 <style>
